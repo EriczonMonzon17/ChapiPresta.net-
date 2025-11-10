@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es-GT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Préstamos rápidos en Guatemala desde Q10,000 hasta Q500,000. 5% interés sobre saldo, primer mes de gracia + bono $5 USD por cada Q5,000 aprobado.">
+  <title>ChapiPresta.net - Préstamos Transparentes Guatemala</title>
+  
+  <!-- TU LOGO COMO FAVICON -->
+  <link rel="icon" href="https://i.ibb.co/4pZjK7H/chapipresta-logo.png" type="image/png">
+  
+  <!-- Estilos / librerías -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .animate-fade { animation: fadeIn 1s ease-in; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-blue-50 min-h-screen">
+
+  <!-- WhatsApp Flotante -->
+  <a href="https://wa.me/50212345678?text=¡Hola! Quiero mi préstamo con ChapiPresta.net" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl z-50 animate-bounce" aria-label="WhatsApp ChapiPresta">
+    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.495.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.052 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 5.44h-.005c-1.64-.001-3.25-.883-4.407-2.505l-.297-.178-4.387 1.15 1.173-4.282-.276-.437c-1.734-2.756-1.648-6.433.191-8.925 2.054-2.052 5.556-2.052 7.61 0 2.052 2.052 2.052 5.555 0 7.61-.682.682-1.586 1.058-2.503 1.058m6.868-12.796c-2.537-2.537-6.044-2.052-8.581 0-2.537 2.537-2.537 6.044 0 8.581l.904 1.431-1.284 4.695 4.818-1.265.898.897c1.181 1.181 2.735 1.772 4.288 1.772 1.553 0 3.107-.591 4.288-1.772 2.537-2.537 2.537-6.044 0-8.581"/></svg>
+  </a>
+
+  <!-- Header con TU LOGO -->
+  <header class="bg-white shadow-lg sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <img src="https://i.ibb.co/4pZjK7H/chapipresta-logo.png" alt="ChapiPresta Logo" class="h-16 md:h-20">
+      <div class="text-2xl font-bold text-green-600">ChapiPresta.net</div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-green-600 to-blue-700 text-white py-32 px-6 text-center">
+    <h1 class="text-5xl md:text-7xl font-bold mb-6">¡El Futuro es Tuyo!</h1>
+    <p class="text-2xl md:text-4xl mb-10 max-w-4xl mx-auto">
+      Préstamos de Q10,000 a Q500,000 · 5% sobre saldo · 1er mes GRATIS · + Bono $5 USD por cada Q5,000
+    </p>
+    <button onclick="document.getElementById('calc').scrollIntoView({behavior:'smooth'})" 
+            class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold text-2xl px-12 py-6 rounded-full shadow-2xl transform hover:scale-110 transition-all">
+      CALCULA TU PRÉSTAMO
+    </button>
+  </section>
+
+  <!-- Calculadora -->
+  <section id="calc" class="py-24 px-6 max-w-5xl mx-auto">
+    <h2 class="text-5xl font-bold text-center mb-16 text-gray-800">Simula tu préstamo en 5 segundos</h2>
+    <div class="bg-white rounded-3xl shadow-2xl p-10">
+      <div class="grid md:grid-cols-2 gap-10 mb-12">
+        <div>
+          <label class="text-xl font-bold">Monto (Q)</label>
+          <input type="range" id="monto" min="10000" max="500000" step="5000" value="50000" class="w-full h-3 rounded-lg">
+          <div class="flex justify-between text-lg">
+            <span>Q10,000</span>
+            <span id="montoVal" class="font-bold text-3xl text-green-600">Q50,000</span>
+            <span>Q500,000</span>
+          </div>
+        </div>
+        <div>
+          <label class="text-xl font-bold">Plazo</label>
+          <input type="range" id="plazo" min="6" max="36" value="12" class="w-full h-3 rounded-lg">
+          <div class="flex justify-between text-lg">
+            <span>6 meses</span>
+            <span id="plazoVal" class="font-bold text-3xl text-blue-600">12 meses</span>
+            <span>36 meses</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-3 gap-6 text-center mb-12">
+        <div class="bg-green-50 p-6 rounded-2xl">
+          <p class="text-gray-600">Cuota mensual*</p>
+          <p id="cuota" class="text-4xl font-bold text-green-600">Q4,583</p>
+        </div>
+        <div class="bg-blue-50 p-6 rounded-2xl">
+          <p class="text-gray-600">Total a pagar</p>
+          <p id="total" class="text-4xl font-bold text-blue-600">Q50,416</p>
+        </div>
+        <div class="bg-yellow-50 p-6 rounded-2xl">
+          <p class="text-gray-600">Bono USD</p>
+          <p id="bono" class="text-4xl font-bold text-yellow-600">$50</p>
+        </div>
+      </div>
+
+      <canvas id="grafico" height="200" aria-label="Gráfico de capital vs interés"></canvas>
+
+      <button onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})"
+              class="w-full mt-12 bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white text-3xl font-bold py-8 rounded-3xl shadow-2xl transform hover:scale-105 transition-all">
+        ¡SOLICITAR AHORA!
+      </button>
+
+      <p class="mt-4 text-sm text-slate-500">*La primera cuota es la más alta y luego disminuye, porque el interés es 5% mensual sobre capital restante.</p>
+    </div>
+  </section>
+
+  <!-- (Aquí puedes añadir Testimonios, Formulario, FAQ y Footer) -->
+
+  <script>
+    // Referencias
+    const monto = document.getElementById('monto');
+    const plazo = document.getElementById('plazo');
+    const montoVal = document.getElementById('montoVal');
+    const plazoVal = document.getElementById('plazoVal');
+    const cuota = document.getElementById('cuota');
+    const total = document.getElementById('total');
+    const bono = document.getElementById('bono');
+    let chart;
+
+    // ==== CALCULADORA CORREGIDA (ChapiPresta): 5% mensual sobre capital restante ====
+    function calcular() {
+      const principal = parseFloat(monto.value);
+      const meses = parseFloat(plazo.value);
+      const tasaMensual = 0.05; // 5% mensual sobre saldo
+      const amortizacion = principal / meses; // capital fijo cada mes
+
+      let saldo = principal;
+      let totalInteres = 0;
+      let pagoPrimerMes = 0;
+
+      for (let m = 1; m <= meses; m++) {
+        const interes = saldo * tasaMensual;
+        totalInteres += interes;
+        const pago = amortizacion + interes;
+        if (m === 1) pagoPrimerMes = pago; // la primera cuota es la más alta
+        saldo -= amortizacion;
+      }
+
+      const totalPagar = principal + totalInteres;
+      const bonoUSD = Math.floor(principal / 5000) * 5;
+
+      // UI
+      montoVal.textContent = 'Q' + principal.toLocaleString();
+      plazoVal.textContent = meses + ' meses';
+      cuota.textContent = 'Q' + Math.round(pagoPrimerMes).toLocaleString();
+      total.textContent = 'Q' + Math.round(totalPagar).toLocaleString();
+      bono.textContent = '$' + bonoUSD;
+
+      // Gráfico
+      if (chart) chart.destroy();
+      chart = new Chart(document.getElementById('grafico'), {
+        type: 'doughnut',
+        data: {
+          labels: ['Capital', 'Interés', 'Bono USD (visual)'],
+          datasets: [{
+            data: [principal, totalInteres, bonoUSD * 100],
+          }]
+        },
+        options: { plugins: { legend: { position: 'bottom' } } }
+      });
+    }
+
+    monto.addEventListener('input', calcular);
+    plazo.addEventListener('input', calcular);
+    calcular();
+  </script>
+</body>
+</html>
